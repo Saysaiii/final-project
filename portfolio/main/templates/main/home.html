@@ -1,0 +1,27 @@
+
+{% extends 'main/base.html' %}
+{% load static %}
+ 
+{% block content %}
+ <h2>Projects</h2>
+{% for project in projects %}
+    <div class="project-card">
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.description }}</p>
+        {% if project.image %}
+            <img src="{{ project.image.url }}" alt="Project Image">
+        {% endif %}
+        <a href="{{ project.link }}" target="_blank">View Project</a>
+    </div>
+{% endfor %}
+
+<!-- Messages Section -->
+<h2>Contact Messages</h2>
+{% for message in messages %}
+    <div class="message-card">
+        <p><strong>{{ message.name }}</strong>: {{ message.message }}</p>
+        <small>Sent on: {{ message.date_sent }}</small>
+    </div>
+{% endfor %}
+        
+{% endblock %}

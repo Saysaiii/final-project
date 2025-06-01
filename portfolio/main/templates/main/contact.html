@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/contact.css' %}" rel="stylesheet">
+</head>
+<body>
+
+    
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">Contact</div>
+            <div class="nav-links">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'projects' %}">Projects</a>
+                <a href="{% url 'contact' %}">Contact</a>
+                
+                <form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit" class="btn">Logout</button>
+</form>
+
+
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        {% block content %}
+<h1>Contact Me</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Send</button>
+</form>
+{% endblock %}
+
+    </main>
+
+   
+
+</script>
+
+</body>
+</html>
